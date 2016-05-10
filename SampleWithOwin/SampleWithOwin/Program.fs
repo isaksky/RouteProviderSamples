@@ -8,11 +8,7 @@ open Microsoft.Owin.Host.HttpListener
 
 type WebApp() =
   let handleOwinContext (ctx:IOwinContext) =
-    try
-      ctx.Response.Write "HI"
-    with
-    | MyNamespace.MyModule.Internal.RouteNotMatchedException(verb, path) ->
-      printfn "Route %s %s not matched" verb path
+    ctx.Response.Write "Hello World"
 
   let owinHandler = fun (context:IOwinContext) (_:Func<Task>) ->
     handleOwinContext context;
